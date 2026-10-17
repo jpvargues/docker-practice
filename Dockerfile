@@ -1,8 +1,10 @@
 FROM debian:stable-slim
 
-# COPY source destination
-COPY docker-file /bin/docker-file
+# Copy the compiled binary into the container root
+COPY goserver /goserver
 
+# Set the port environment variable inside the container
 ENV PORT=8991
 
-CMD ["/bin/docker-file"]
+# Run the Go server binary
+CMD ["/goserver"]
